@@ -1,0 +1,38 @@
+
+<br/>
+<h2 class="font-monospace border border-dark bg-gradient bg-info" style="width: 8rem;">Details</h2>
+<div class="jumbotron bg-gradient bg-success border border-dark">
+  <h4 class="display-8">
+      <strong class="font-monospace">Date:</strong>
+      <%= @jogging_time.date&.strftime("%F") %>
+    <br/>
+      <strong class="font-monospace">Distance[km]:</strong>
+      <%= @jogging_time.distance %>
+    <br/>
+      <strong class="font-monospace">Total time[hr|min|sec]:</strong>
+      <%= @jogging_time.total_time.strftime("%T") %>
+        <% v1 = @jogging_time.total_time.hour %>
+        <% v2 = @jogging_time.total_time.min %>
+        <% v3 = @jogging_time.total_time.sec %>
+        <% p1 = v1*3600 %>
+        <% p2 = v2*60 %>
+        <% p_tot = p1 + p2 + v3 %>
+        <% r_tot = p_tot/(3600.to_f) %>
+    <br/>
+      <strong class="font-monospace"> Average Speed[km/hr]: </strong>
+      <%= r_tot.round(2) %>
+      
+  </h4>  
+
+</div>
+  <div class="p-3 mb-2 bg-gradient bg-dark text-white border border-dark">
+    <%= link_to 'Edit', edit_jogging_time_path(@jogging_time), class:"btn btn-warning" %> 
+    <%= link_to 'Back', jogging_times_path, class:"btn btn-secondary" %>
+  </div>
+
+
+
+
+
+
+

@@ -1,0 +1,24 @@
+<h1>Edit user</h1>
+<%= form_for(@user, url: users_update_path) do |form| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <ul>
+        <% @user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group", style="width: 15rem;" >
+    <%= form.label :email %>
+    <%= form.text_field :email, class:"form-control"%>
+  </div>
+  <br/>
+ <br/>
+  <div class="actions">
+    <%= form.submit class:"btn btn-success border border-dark" %>
+  </div>
+  <br/>
+<% end %>

@@ -1,0 +1,31 @@
+<h3>Average speed & distance per week</h3>
+<% if current_user %>
+    <% if current_user.user_manager? %>
+            <table class="table table-hover table-striped table-info table-bordered border-dark">
+                <thead class="table-dark">
+                    <tr>
+                    <th>ID</th>
+                    <th>Email</th>
+                    <th>Created at</th>
+                    <th> Show</th>
+                    <th> Edit</th>
+                    <th> Delete</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <% @users.each do |user| %>
+                
+                        <tr>
+                            <td><%= user.id %></td>
+                            <td><%= user.email %></td>
+                            <td><%= user.created_at %></td>
+                            <td><%= link_to 'Show', users_show_path(user), class:"btn btn-info" %></td>
+                            <td><%= link_to 'Edit', users_edit_path(user), class:"btn btn-warning" %></td>
+                            <td><%= link_to 'Delete', users_destroy_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %></td>
+                        </tr>
+                    <% end %>
+                </tbody>
+        </table>
+    <% end %>
+<% end %>

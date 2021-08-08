@@ -1,0 +1,11 @@
+
+
+<div class="card text-dark bg-light mb-3" style="max-width: 33rem;">
+  <div class="card-header"><b>New Jogging Time</b></div>
+  <div class="card-body">
+    <p class="card-text">
+        <%= render 'form', jogging_time: @jogging_time %>
+    </p>
+    <%= link_to 'Back', jogging_times_path, class:"btn btn-secondary border border-dark" %>
+  </div>
+</div>

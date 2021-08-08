@@ -1,0 +1,34 @@
+
+
+<h1>Jogging Times</h1>
+
+<table class="table table-hover table-striped table-info table-bordered border-dark">
+  <thead class="table-dark">
+    <tr>
+      <th>Date</th>
+      <th>Distance</th>
+      <th>Total time</th>
+      <th> Show</th>
+      <th> Edit</th>
+      <th> Delete</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @jogging_times.each do |jogging_time| %>
+      <% if jogging_time.user == current_user%>
+        <tr>
+          <td><%= jogging_time.date&.strftime("%F")%></td>
+          <td><%= jogging_time.distance %></td>
+          <td><%= jogging_time.total_time.strftime("%T") %></td>
+          <td><%= link_to 'Show', jogging_time, class:"btn btn-info" %></td>
+          <td><%= link_to 'Edit', edit_jogging_time_path(jogging_time), class:"btn btn-warning" %></td>
+          <td><%= link_to 'Delete', jogging_time, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'New Jogging Time', new_jogging_time_path, class:"btn btn-success border border-dark" %>

@@ -1,0 +1,28 @@
+<h2 class=" font-monospace border border-dark rounded bg-dark bg-gradient text-white" style="width: 7rem;">Log in</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field form-group" style="width: 18rem;">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder:"ted@example.com" %>
+  </div>
+
+  <div class="field form-group" style="width: 18rem;">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "current-password", class:"form-control", placeholder:"passsword123" %>
+  </div>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="form-group">
+      <%= f.check_box :remember_me, class:"form-check-input"%>
+      <%= f.label :remember_me%>
+    </label>
+</div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit "Log in", class:"btn btn-success border border-dark" %>
+  </div>
+<% end %>
+<br/>
+
+<%= render "devise/shared/links" %>

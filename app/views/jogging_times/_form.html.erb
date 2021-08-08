@@ -1,0 +1,41 @@
+<%= form_with(model: jogging_time) do |form| %>
+  <% if jogging_time.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(jogging_time.errors.count, "error") %> prohibited this jogging_time from being saved:</h2>
+
+      <ul>
+        <% jogging_time.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group", style="width: 15rem;" >
+    <%= form.label :date %>
+    <%= form.date_field :date, class:"form-control"%>
+  </div>
+  <br/>
+
+  <div class="field form-group", style="width: 15rem;" >
+    <%= form.label :distance%>
+    <%= form.text_field :distance,class:"form-control"%>
+  </div>
+  <br/>
+
+  <div class="field form-group">
+
+    <div class="btn btn-info btn-sm border border-dark"><%= form.label :total_time %></div>
+      <%= time_select("jogging_time", "total_time", include_seconds: true, prompt: {hour: 'Choose hour', minute: 'Choose minute', second: 'Choose seconds'}) %>
+  </div>
+  <div class="field form-group", style="width: 15rem;" >
+    <%= form.number_field :user_id, id: :jogging_time_user_id, class:"form-control", value: current_user.id, type: :hidden %>
+  </div>
+ <br/>
+  <div class="actions">
+    <%= form.submit class:"btn btn-success border border-dark" %>
+  </div>
+  <br/>
+<% end %>
+
+    

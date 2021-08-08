@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <%= link_to 'Reports per week', root_path, class:"btn btn-secondary btn-sm"%> 
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+       
+        <% if user_signed_in? %>
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <%= link_to 'Jogging Times', jogging_times_path, class:"btn btn-info btn-sm" %>
+            </li>
+        </ul>
+        <li class="nav-item">
+            <%= link_to 'Edit Profile',  edit_user_registration_path, class:"btn btn-warning btn-sm" %>
+        </li>
+        <li class="nav-item">
+            <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class:"btn btn-danger btn-sm" %>
+        </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to 'Sign Up', new_user_registration_path, class:"btn btn-primary btn-sm" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Sign In', new_user_session_path, class:"btn btn-success btn-sm" %>
+          </li>
+        <% end %>
+          
+        
+        
+    </div>
+  </div>
+</nav>
